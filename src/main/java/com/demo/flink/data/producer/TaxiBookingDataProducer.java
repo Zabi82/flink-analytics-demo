@@ -8,7 +8,6 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import javax.xml.stream.Location;
 import java.util.Properties;
 
 public class TaxiBookingDataProducer {
@@ -51,6 +50,6 @@ public class TaxiBookingDataProducer {
 	}
 
 	public static void main(String[] args) {
-		 new TaxiBookingDataProducer().produceTaxiBookingMessage(LocationTheme.LONG_WEEKEND, 1000);
+		 new TaxiBookingDataProducer().produceTaxiBookingMessage(LocationTheme.LONG_WEEKEND, 500);
 	}
 }
