@@ -17,7 +17,7 @@ public class TaxiBookingDataProducer {
 	public void produceTaxiBookingMessage(LocationTheme locationTheme, int delay_ms) {
 
 		Properties props = new Properties();
-		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092");
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaJsonSerializer.class);
 
@@ -26,7 +26,7 @@ public class TaxiBookingDataProducer {
 			long count = 0;
 			while (true) {
 
-				TaxiBooking booking = (count % 2 == 0) ? TaxiBooking.newRandomBooking() : TaxiBooking.newRandomBooking(locationTheme);
+				TaxiBooking booking = (count % 10 == 0) ? TaxiBooking.newRandomBooking() : TaxiBooking.newRandomBooking(locationTheme);
 				ProducerRecord<String, TaxiBooking> record = new ProducerRecord<>(TAXI_RIDES_TOPIC, booking.getRide_id(), booking);
 				//call back handler lambda for to evaluate the result of sending a record
 				kafkaProducer.send(record, (recordMetaData, exception) -> {
@@ -50,6 +50,6 @@ public class TaxiBookingDataProducer {
 	}
 
 	public static void main(String[] args) {
-		 new TaxiBookingDataProducer().produceTaxiBookingMessage(LocationTheme.LONG_WEEKEND, 500);
+		 new TaxiBookingDataProducer().produceTaxiBookingMessage(LocationTheme.REGULAR, 500);
 	}
 }
