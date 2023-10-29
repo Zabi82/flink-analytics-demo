@@ -10,10 +10,17 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
 
-public class TaxiBookingDataProducer {
+public class TaxiBookingDataKafkaProducer implements TaxiBookingProducer {
 
 	public static final String TAXI_RIDES_TOPIC = "taxi_ride";
 
+	public static TaxiBookingDataKafkaProducer INSTANCE = new TaxiBookingDataKafkaProducer();
+
+	private TaxiBookingDataKafkaProducer() {
+
+	}
+
+	@Override
 	public void produceTaxiBookingMessage(LocationTheme locationTheme, int delay_ms) {
 
 		Properties props = new Properties();
@@ -44,12 +51,11 @@ public class TaxiBookingDataProducer {
 
 		}
 		catch(Exception e) {
+			System.out.println("Exception occurred " + e);
 			e.printStackTrace();
 		}
 
 	}
 
-	public static void main(String[] args) {
-		 new TaxiBookingDataProducer().produceTaxiBookingMessage(LocationTheme.REGULAR, 500);
-	}
+
 }
