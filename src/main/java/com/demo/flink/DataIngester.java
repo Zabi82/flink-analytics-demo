@@ -8,8 +8,8 @@ import com.demo.flink.data.producer.TaxiBookingProducer;
 public class DataIngester {
 
     public static void main(String[] args) {
-        Thread kafkaProducerThread = new Thread(new TaxiBookingProducerRunnable(TaxiBookingDataKafkaProducer.INSTANCE, LocationTheme.NORMAL_WEEKEND, 500));
-        Thread fileProducerThread = new Thread(new TaxiBookingProducerRunnable(TaxiBookingDataFileProducer.INSTANCE, LocationTheme.NORMAL_WEEKEND, 1000));
+        Thread kafkaProducerThread = new Thread(new TaxiBookingProducerRunnable(TaxiBookingDataKafkaProducer.INSTANCE, LocationTheme.LONG_WEEKEND, 500));
+        Thread fileProducerThread = new Thread(new TaxiBookingProducerRunnable(TaxiBookingDataFileProducer.INSTANCE, LocationTheme.LONG_WEEKEND, 1000));
         kafkaProducerThread.start();
         fileProducerThread.start();
 
