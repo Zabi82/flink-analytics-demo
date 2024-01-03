@@ -14,7 +14,7 @@ import java.util.UUID;
 public class TaxiBookingDataFileProducer implements TaxiBookingProducer {
 
 
-    public static final String INPUT_FOLDER = System.getenv("HOME") + "/flinksql-demo/input/";
+    public static final String INPUT_FOLDER = System.getenv("HOME") + "/flinksql/input/";
 
     public static TaxiBookingProducer INSTANCE = new TaxiBookingDataFileProducer();
 

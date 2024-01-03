@@ -29,7 +29,7 @@ A sample event published will be as follows
 
 * Kafka broker details can be updated in TaxiBookingDataKafkaProducer.java
 * File system directory can be configured in TaxiBookingDataFileProducer.java. By default it's 
-configured to write to $HOME/flinksql-demo/input directory
+configured to write to $HOME/flinksql/input directory
 * Simulation theme can be changed in DataIngester.java by using any of the LocationTheme enum values available
 
 ## How to start the simulator ?
